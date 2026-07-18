@@ -1,21 +1,27 @@
-import CodeUpload from "./components/CodeUpload";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import LandingPage from "./pages/LandingPage";
+import ScannerPage from "./pages/ScannerPage";
 
 function App() {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-        fontFamily: "Arial",
-      }}
-    >
-      <div>
-        <h1>🛡️ CodeGuardian AI</h1>
-        <CodeUpload />
-      </div>
-    </div>
+    <BrowserRouter>
+
+      <Routes>
+
+        <Route
+          path="/"
+          element={<LandingPage />}
+        />
+
+        <Route
+          path="/scan"
+          element={<ScannerPage />}
+        />
+
+      </Routes>
+
+    </BrowserRouter>
   );
 }
 
