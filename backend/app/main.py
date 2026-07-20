@@ -24,18 +24,18 @@ app = FastAPI(
 )
 
 # CORS
+# CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
         "http://localhost:5174",
-        "https://codeguardian-ai-five.vercel.app"
+        "https://code-guardian-ai-five.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 @app.get("/")
 def root():
