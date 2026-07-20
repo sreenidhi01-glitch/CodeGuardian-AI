@@ -20,26 +20,39 @@ function CodeUpload() {
     }
 
     setLoading(true);
-    setMessage("Analyzing code...");
+setMessage("Analyzing code...");
 
-    const formData = new FormData();
-    formData.append("file", file);
+const formData = new FormData();
+formData.append("file", file);
 
-    try {
-      const response = await api.post("/scan", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+// record when loading started
+const startTime = Date.now();
 
-      setResult(response.data);
-      setMessage("✅ Analysis Completed Successfully!");
-    } catch (error) {
-      console.error(error);
-      setMessage("❌ Upload failed.");
-    } finally {
-      setLoading(false);
-    }
+try {
+  const response = await api.post("/scan", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+
+  // make sure loading screen stays visible for at least 4 seconds
+  const elapsed = Date.now() - startTime;
+
+  if (elapsed < 7000) {
+    await new Promise(resolve =>
+      setTimeout(resolve, 7000 - elapsed)
+    );
+  }
+
+  setResult(response.data);
+  setMessage("✅ Analysis Completed Successfully!");
+
+} catch (error) {
+  console.error(error);
+  setMessage("❌ Upload failed.");
+} finally {
+  setLoading(false);
+}
   };
 
   const downloadReport = async () => {
