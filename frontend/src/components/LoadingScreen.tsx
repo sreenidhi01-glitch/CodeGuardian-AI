@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import {
+  FaCloudUploadAlt,
+  FaFileCode,
   FaSearch,
   FaLock,
   FaRobot,
@@ -10,20 +12,48 @@ import {
 
 const steps = [
   {
+    icon: <FaCloudUploadAlt />,
+    text: "Uploading file...",
+  },
+  {
+    icon: <FaFileCode />,
+    text: "Parsing source code...",
+  },
+  {
     icon: <FaSearch />,
-    text: "Running Static Analysis",
+    text: "Detecting programming language...",
   },
   {
     icon: <FaLock />,
-    text: "Scanning for Secrets",
+    text: "Running Secret Scanner...",
+  },
+  {
+    icon: <FaSearch />,
+    text: "Running Static Analysis...",
+  },
+  {
+    icon: <FaSearch />,
+    text: "Checking Dependencies...",
+  },
+  {
+    icon: <FaSearch />,
+    text: "Performing Architecture Review...",
   },
   {
     icon: <FaRobot />,
-    text: "Generating AI Security Review",
+    text: "AI Generating Secure Fixes...",
+  },
+  {
+    icon: <FaCheckCircle />,
+    text: "Calculating Security Score...",
   },
   {
     icon: <FaFilePdf />,
-    text: "Preparing Security Report",
+    text: "Generating Professional Report...",
+  },
+  {
+    icon: <FaCheckCircle />,
+    text: "Preparing Dashboard...",
   },
 ];
 
@@ -40,7 +70,7 @@ export default function LoadingScreen() {
         }
         return prev + 1;
       });
-    }, 40);
+    }, 120);
 
     return () => clearInterval(progressTimer);
   }, []);
@@ -64,7 +94,8 @@ export default function LoadingScreen() {
       </h2>
 
       <p className="text-center text-slate-400 mb-10">
-        AI Engine is reviewing your project...
+       CodeGuardian AI is performing a comprehensive security audit.
+Please wait while we analyze your project...
       </p>
 
       <div className="space-y-5">
