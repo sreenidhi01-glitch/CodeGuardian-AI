@@ -38,9 +38,9 @@ try {
   // make sure loading screen stays visible for at least 4 seconds
   const elapsed = Date.now() - startTime;
 
-  if (elapsed < 7000) {
+  if (elapsed < 11000) {
     await new Promise(resolve =>
-      setTimeout(resolve, 7000 - elapsed)
+      setTimeout(resolve, 11000 - elapsed)
     );
   }
 
